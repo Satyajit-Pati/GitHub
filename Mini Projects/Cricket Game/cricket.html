@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Cricket game</title>
+  <style>
+    body{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+   <h2>Bat Ball Stump Game</h2>
+   <button onclick="
+   console.log('You have chosen Bat.');
+   let randomNumber=Math.random()*3;
+   let computerChoice;
+   if(randomNumber>0 && randomNumber<=1){
+    computerChoice= 'Bat';}
+   else if(randomNumber>1 && randomNumber<=2){
+    computerChoice= 'Ball';}
+   else{
+    computerChoice= 'Stump';
+   }
+
+   if(computerChoice === 'Ball'){
+    console.log('You won');
+   }
+   else if(computerChoice === 'stump'){
+    console.log('You lost');
+   }
+   else{
+    console.log('Tie');
+   }
+   ">Bat</button>
+
+   <button onclick="
+   console.log('You have chosen Ball.');
+   randomNumber=Math.random()*3;
+   if(randomNumber>0 && randomNumber<=1){
+    computerChoice= 'Bat';}
+   else if(randomNumber>1 && randomNumber<=2){
+    computerChoice= 'Ball';}
+   else{
+    computerChoice= 'Stump';
+   }
+
+   if(computerChoice === 'Ball'){
+    console.log('Tie');
+   }
+   else if(computerChoice === 'stump'){
+    console.log('You won');
+   }
+   else{
+    console.log('You lost');
+   }
+   ">Ball</button>
+
+   <button onclick="
+   console.log('You have chosen Stumps.');
+   randomNumber=Math.random()*3;
+   if(randomNumber>0 && randomNumber<=1){
+    computerChoice= 'Bat';}
+   else if(randomNumber>1 && randomNumber<=2){
+    computerChoice= 'Ball';}
+   else{
+    computerChoice= 'Stump';
+   }
+   let resultMsg;
+   if(computerChoice === 'Ball'){
+    resultMsg='You lost';
+   }
+   else if(computerChoice === 'stump'){
+    resultMsg='Tie';
+   }
+   else{
+    resultMsg='You won';
+   }
+   ">Stump</button>
+</body>
+</html>
