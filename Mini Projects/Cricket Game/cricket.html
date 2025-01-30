@@ -10,71 +10,97 @@
 </head>
 <body>
    <h2>Bat Ball Stump Game</h2>
-   <button onclick="
-   console.log('You have chosen Bat.');
-   let randomNumber=Math.random()*3;
-   let computerChoice;
-   if(randomNumber>0 && randomNumber<=1){
-    computerChoice= 'Bat';}
-   else if(randomNumber>1 && randomNumber<=2){
-    computerChoice= 'Ball';}
-   else{
-    computerChoice= 'Stump';
-   }
-
-   if(computerChoice === 'Ball'){
-    console.log('You won');
-   }
-   else if(computerChoice === 'stump'){
-    console.log('You lost');
-   }
-   else{
-    console.log('Tie');
-   }
-   ">Bat</button>
 
    <button onclick="
-   console.log('You have chosen Ball.');
-   randomNumber=Math.random()*3;
-   if(randomNumber>0 && randomNumber<=1){
-    computerChoice= 'Bat';}
-   else if(randomNumber>1 && randomNumber<=2){
-    computerChoice= 'Ball';}
-   else{
-    computerChoice= 'Stump';
-   }
-
-   if(computerChoice === 'Ball'){
-    console.log('Tie');
-   }
-   else if(computerChoice === 'stump'){
-    console.log('You won');
-   }
-   else{
-    console.log('You lost');
-   }
-   ">Ball</button>
+   let computersChoice = generateComputerChoice();
+   let resultMsg = result('Bat',computersChoice);
+   showResult('Bat', computersChoice, resultMsg)">Bat</button>
 
    <button onclick="
-   console.log('You have chosen Stumps.');
-   randomNumber=Math.random()*3;
+   computersChoice = generateComputerChoice();
+   resultMsg = result('Ball',computersChoice);
+   showResult('Ball', computersChoice, resultMsg)">Ball</button>
+
+   <button onclick="
+   computersChoice = generateComputerChoice();
+   resultMsg = result('Stump',computersChoice);
+   showResult('Stump', computersChoice, resultMsg)">Stump</button>
+
+   <script>
+
+let score = {
+      win:0,
+      lost:0,
+      tie:0,
+    }
+
+    let{win,lost,tie}=score;
+
+    function generateComputerChoice(){
+      randomNumber=Math.random()*3;
    if(randomNumber>0 && randomNumber<=1){
-    computerChoice= 'Bat';}
+    return 'Bat';}
    else if(randomNumber>1 && randomNumber<=2){
-    computerChoice= 'Ball';}
+    return 'Ball';}
    else{
-    computerChoice= 'Stump';
+    return 'Stump';
    }
-   let resultMsg;
-   if(computerChoice === 'Ball'){
-    resultMsg='You lost';
-   }
-   else if(computerChoice === 'stump'){
-    resultMsg='Tie';
-   }
-   else{
-    resultMsg='You won';
-   }
-   ">Stump</button>
+    }
+
+    function result(usersChoice,computersChoice){
+      if(computersChoice=='Bat'){
+        if(usersChoice=='Ball'){
+         win++;
+         return 'You Won!';
+        }
+        if(usersChoice=='Bat'){
+          tie++;
+          return 'Tie!';
+        }
+        if(usersChoice=='Stump'){
+          lost++;
+         return 'You Lost!';
+        }
+      }
+      else if(computersChoice=='Ball'){
+        if(usersChoice=='Stump'){
+          lost++;
+         return 'You Lost!';
+        }
+        if(usersChoice=='Ball'){
+          tie++;
+          return 'Tie!';
+        }
+        if(usersChoice=='Bat'){
+          win++;
+         return 'You Won!';
+        }
+      }
+      else{
+        if(usersChoice=='Ball'){
+          win++;
+         return 'You Won!';
+        }
+        if(usersChoice=='Stump'){
+          tie++;
+         return 'Tie!';
+        }
+        if(usersChoice=='Bat'){
+          lost++;
+         return 'You Lost!';
+        }
+      }
+    }
+
+    function showResult(usersChoice, computersChoice, resultMsg){
+      alert(`You have chosen ${usersChoice}, Computer's choice is ${computersChoice}
+      
+      ${resultMsg}
+      
+      Won: ${win}, Lost: ${lost}, Tied: ${tie}`);
+    }
+
+
+   </script>
 </body>
 </html>
